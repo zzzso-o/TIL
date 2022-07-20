@@ -1,3 +1,3 @@
 # Today I Learned
 
-happy birthday!
+기억보다 기록을
