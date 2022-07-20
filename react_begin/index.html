@@ -5,27 +5,24 @@
 </body>
 <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
-<script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script type="text/babel">
   const root = document.getElementById("root")
-  const h3 = React.createElement(
-  "h3", 
-  {
-    id: "title",
-    onMouseEnter: () => console.log("mouse enter"),
-  }, 
-  "Hello, I'm a title"
+  function App() {
+    const [counter, setCounter] = React.useState(0)
+    const onClick = () => {
+      // setCounter(counter + 1)
+      // 현재 state 값을 이용해 계산하고싶다면 함수를 이용해야 한다.
+      // react가 현재 값이라는 것을 확실하게 보장해줌
+      setCounter((current) => current + 1)
+    }
+    return (
+    <div>
+      <h3>Total clicks: {counter}</h3>
+      <button onClick={onClick}>Click me</button>
+  </div>
   )
-  const btn = React.createElement(
-    "button", 
-    {
-      onClick: () => console.log("im clicked"),
-      style: {
-        backgroundColor: "tomato",
-      },
-    },
-    "click me"
-  )
-  const container = React.createElement("div", null, [h3, btn])
-  ReactDOM.render(container, root)
+}
+ReactDOM.render(<App />, root)
 </script>
 </html>
